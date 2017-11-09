@@ -12,7 +12,6 @@ const App = () => (
   <div className="App">
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/articles/:slug" component={About} />
     </Switch>
   </div>
 )
