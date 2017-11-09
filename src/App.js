@@ -3,21 +3,12 @@ import { Route, Switch } from 'react-router-dom'
 
 const Home = () => <div> Home </div>
 
-/**
- * @param '/' {Go to Article List}
- * @param '/articles/:slug' {Go to Article Page}
- */
 const App = () => (
-  <div className="App">
-    <div className="ui grid">
-      <div className="four wide column"></div>
-      <div className="four wide column"></div>
-      <div className="four wide column"></div>
-      <div className="four wide column"></div>
-    </div>
+  <div className='App'>
 
+    {/* routing */}
     <Switch>
-      <Route exact path="/" component={Home} />
+      <Route exact path='/' component={Home} />
     </Switch>
   </div>
 )
