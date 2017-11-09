@@ -17,6 +17,9 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom'
 
+/* semantic UI css */
+import 'semantic-ui-css/semantic.css';
+
 /* setup dotenv */
 import { config } from 'dotenv';
 config();
