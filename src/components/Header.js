@@ -9,7 +9,7 @@ const Header = () => (
       </Link>
     </h1>
     <div>
-      ...developed by <a href='#'> @mrkjlchvz </a>
+      ...developed by <a href='https://github.com/mrkjlchvz'> @mrkjlchvz </a>
     </div>
 
     <hr />

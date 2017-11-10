@@ -49,7 +49,7 @@ class ArticlesPage extends Component {
     })
 
     return (
-      <div className='ui feed'> {articles} </div>
+      <div className='ui large feed'> {articles} </div>
     )
   }
 
