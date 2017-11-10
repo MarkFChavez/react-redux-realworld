@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
 import ArticlesPage from './components/ArticlesPage'
 
+const ArticleItemPage = () => <div> article item </div>
+
 const App = () => (
   <div className='App'>
 
@@ -17,6 +19,7 @@ const App = () => (
 
           <Switch>
             <Route exact path='/' component={ArticlesPage} />
+            <Route path='/articles/:slug' component={ArticleItemPage} />
           </Switch>
         </div>
       </div>
