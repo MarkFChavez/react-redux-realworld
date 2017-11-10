@@ -24,14 +24,18 @@ import 'semantic-ui-css/semantic.css'
 import { config } from 'dotenv'
 config()
 
+const store = createStore(reducers, applyMiddleware(thunk))
+
 ReactDOM.render(
-  <Provider store={createStore(reducers, applyMiddleware(thunk))}>
+  <Provider store={store}>
     <Router>
       <div className='ui container'>
         <div className='ui grid'>
           <div className='column'>
-            <Header />
-            <App />
+            <div style={{ paddingTop: '20px' }}>
+              <Header />
+              <App />
+            </div>
           </div>
         </div>
       </div>

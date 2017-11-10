@@ -5,7 +5,7 @@ const API_ROOT = 'http://conduit.productionready.io/api'
 
 /* Request wrapper ... */
 const request = {
-  get (url) { axios.get(url) }
+  get: url => axios.get(url)
 }
 
 /* Articles Endpoints */

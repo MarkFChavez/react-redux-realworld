@@ -1,14 +1,11 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-
-const Home = () => <div> Home </div>
+import ArticlesPage from './components/ArticlesPage'
 
 const App = () => (
-  <div className='App'>
-
-    {/* routing */}
+  <div className='App' style={{ marginTop: '20px' }}>
     <Switch>
-      <Route exact path='/' component={Home} />
+      <Route exact path='/' component={ArticlesPage} />
     </Switch>
   </div>
 )
