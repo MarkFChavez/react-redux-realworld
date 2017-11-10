@@ -24,21 +24,17 @@ class ArticlesPage extends Component {
           <div className="label">
             <img src={article.author.image} />
           </div>
-
           <div className="content">
             <div className="summary">
               <a>{article.author.username}</a> posted on the page.
             </div>
-
             <div className="extra text">
               {article.description}
             </div>
-
             <div className="meta">
               <a className="readmore">
                 read more...
               </a>
-
               <a className="like">
                 <i className="like icon"></i> {article.favoritesCount} favorites
               </a>
