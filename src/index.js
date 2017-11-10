@@ -1,44 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import registerServiceWorker from './registerServiceWorker'
+import { render } from 'react-dom'
 import App from './App'
-import Header from './components/Header'
-
-/* redux */
+import registerServiceWorker from './registerServiceWorker'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import reducers from './reducers'
-
-/* redux-thunk middleware */
-import thunk from 'redux-thunk'
-
-/* react-router-dom */
-import {
-  BrowserRouter as Router
-} from 'react-router-dom'
-
-/* semantic UI css */
-import 'semantic-ui-css/semantic.css'
-
-/* setup dotenv */
+import store from './configureStore'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { config } from 'dotenv'
+import 'semantic-ui-css/semantic.css'
 config()
 
-const store = createStore(reducers, applyMiddleware(thunk))
-
-ReactDOM.render(
+render(
   <Provider store={store}>
     <Router>
-      <div className='ui container'>
-        <div className='ui grid'>
-          <div className='column'>
-            <div style={{ paddingTop: '20px' }}>
-              <Header />
-              <App />
-            </div>
-          </div>
-        </div>
-      </div>
+      <App />
     </Router>
   </Provider>
 , document.getElementById('root'));
