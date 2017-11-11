@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux'
 import { fetchGlobalArticles } from '../actions'
 import { Link } from 'react-router-dom'
 
-const stateToProps = state => (
-  { articles: state.articles }
+const stateToProps = ({articles, appLoading}) => (
+  { articles, appLoading }
 )
 
 const dispatchToProps = dispatch => {
@@ -19,6 +19,10 @@ class ArticlesPage extends Component {
   }
 
   render () {
+    if (this.props.appLoading) {
+      return <div> loading ... </div>
+    }
+
     const articles = this.props.articles.map(article => {
       return (
         <div key={article.slug} className="event">
