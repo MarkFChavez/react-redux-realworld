@@ -10,7 +10,8 @@ const request = {
 
 /* Articles Endpoints */
 const Articles = {
-  all: () => request.get(`${API_ROOT}/articles`)
+  all: () => request.get(`${API_ROOT}/articles`),
+  show: slug => request.get(`${API_ROOT}/articles/${slug}`)
 }
 
 export default {

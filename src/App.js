@@ -2,8 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
 import ArticlesPage from './components/ArticlesPage'
-
-const ArticleItemPage = () => <div> article item </div>
+import ArticleItemPage from './components/ArticleItemPage'
 
 const App = () => (
   <div className='App'>
