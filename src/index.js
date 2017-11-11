@@ -9,6 +9,8 @@ import { config } from 'dotenv'
 import 'semantic-ui-css/semantic.css'
 import './assets/css/styles.css'
 
+// Enables us to store different environment variables which can be
+// accessed by calling `process.env`
 config()
 
 render(

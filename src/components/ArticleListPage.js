@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux'
 import { fetchGlobalArticles } from '../actions'
 import { Link } from 'react-router-dom'
 
-const stateToProps = ({articles, appLoading}) => (
-  { articles, appLoading }
+const stateToProps = ({articles, commons}) => (
+  { articles, commons }
 )
 
 const dispatchToProps = dispatch => {
@@ -35,7 +35,7 @@ class ArticlesPage extends Component {
   }
 
   render () {
-    if (this.props.appLoading) {
+    if (this.props.commons.appLoading) {
       return <div> loading ... </div>
     }
 

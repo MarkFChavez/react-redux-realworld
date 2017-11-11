@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchArticle, unsetArticle } from '../actions'
 
-const stateToProps = ({ article, appLoading }) => ({ article, appLoading })
+const stateToProps = ({ article, commons }) => ({ article, commons })
 const dispatchToProps = dispatch => {
   return bindActionCreators({
     fetchArticle,
@@ -24,7 +24,7 @@ class ArticleItemPage extends Component {
 
   render () {
     const { article } = this.props
-    if (this.props.appLoading || !article) {
+    if (this.props.commons.appLoading || !article) {
       return <div> loading... </div>
     }
     return (

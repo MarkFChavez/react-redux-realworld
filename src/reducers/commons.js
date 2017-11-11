@@ -1,14 +1,14 @@
 import * as types from '../constants/actionTypes'
 
-const appLoading = (state = false, action) => {
+const commons = (state = {}, action) => {
   switch (action.type) {
     case types.SET_APP_LOADING:
-      return true
+      return { ...state, appLoading: true }
     case types.UNSET_APP_LOADING:
-      return false
+      return { ...state, appLoading: false }
     default:
       return state
   }
 }
 
-export default appLoading
+export default commons

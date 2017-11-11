@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import articles from './articles'
 import article from './article'
-import appLoading from './appLoading'
+import commons from './commons'
 
 const reducers = combineReducers({
   article,
   articles,
-  appLoading
+  commons
 });
 
 export default reducers;

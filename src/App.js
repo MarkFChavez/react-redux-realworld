@@ -13,7 +13,6 @@ class App extends Component {
           <div className='ui grid'>
             <div className='column'>
               <Header />
-
               <Switch>
                 <Route exact path='/' component={ArticleListPage} />
                 <Route path='/articles/:slug' component={ArticleItemPage} />
