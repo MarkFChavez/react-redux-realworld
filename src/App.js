@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
-import ArticlesPage from './components/ArticlesPage'
+import ArticleListPage from './components/ArticleListPage'
 import ArticleItemPage from './components/ArticleItemPage'
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
               <Header />
 
               <Switch>
-                <Route exact path='/' component={ArticlesPage} />
+                <Route exact path='/' component={ArticleListPage} />
                 <Route path='/articles/:slug' component={ArticleItemPage} />
               </Switch>
             </div>

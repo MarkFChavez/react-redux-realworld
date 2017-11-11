@@ -27,12 +27,10 @@ class ArticleItemPage extends Component {
     if (this.props.appLoading || !article) {
       return <div> loading... </div>
     }
-
     return (
-      <div className="ui sizer vertical segment">
-        <div className="ui huge header">{article.title}</div>
+      <div className='ui segment'>
+        <div className='ui huge header'>{article.title}</div>
         <p>{article.body}</p>
-
         <div>
           <img src={article.author.image} width={32} height={32} />
           &nbsp;

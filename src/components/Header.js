@@ -2,17 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Header = () => (
-  <div>
-    <h1>
-      <Link to='/'>
-        Conduit - a medium clone.
+  <div className='ui stackable menu'>
+    <div className='item'>
+      <Link to='/' className='Header__text'>
+        <h1> conduit </h1>
       </Link>
-    </h1>
-    <div>
-      ...developed by <a href='https://github.com/mrkjlchvz'> @mrkjlchvz </a>
     </div>
-
-    <hr />
+    <div className='right menu'>
+      <Link to='/' className='item'>Home</Link>
+      <a className='item'>Sign in</a>
+      <a className='item'>Sign up</a>
+    </div>
   </div>
 )
 

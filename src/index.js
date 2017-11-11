@@ -7,6 +7,7 @@ import store from './configureStore'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { config } from 'dotenv'
 import 'semantic-ui-css/semantic.css'
+import './assets/css/styles.css'
 
 config()
 

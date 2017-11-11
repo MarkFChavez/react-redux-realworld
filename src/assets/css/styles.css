@@ -1,0 +1,7 @@
+.App {
+  padding-top: 15px;
+}
+
+.Header__text, .Header__text:hover {
+  color: #5CB85C;
+}
