@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchArticle, unsetArticle } from '../actions'
+import { markdown } from 'markdown'
 
 const stateToProps = ({ article, commons }) => ({ article, commons })
 const dispatchToProps = dispatch => {
@@ -27,10 +28,13 @@ class ArticleItemPage extends Component {
     if (this.props.commons.appLoading || !article) {
       return <div> loading... </div>
     }
+
+    const innerHtml = { __html: markdown.toHTML(article.body) }
     return (
       <div className='ui segment'>
         <div className='ui huge header'>{article.title}</div>
-        <p>{article.body}</p>
+        <p dangerouslySetInnerHTML={innerHtml}>
+        </p>
         <div>
           <img src={article.author.image} width={32} height={32} />
           &nbsp;
