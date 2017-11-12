@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchGlobalArticles } from '../actions'
 import { Link } from 'react-router-dom'
+import PaginationList from './PaginationList'
 
 const stateToProps = ({articles, commons}) => (
   { articles, commons }
@@ -42,7 +43,7 @@ class ArticlesPage extends Component {
     const articles = this.props.articles.map(article => {
       return (
         <div key={article.slug} className="ui green segment">
-          <img className='ui left floated image' src={article.author.image} />
+          <img className='ui left floated image' src={article.author.image} width={64} height={64} />
           <div className='ui right floated'>
             <div className='ui medium header'>
               <Link to={`/articles/${article.slug}`}>{article.title}</Link>
@@ -59,7 +60,11 @@ class ArticlesPage extends Component {
     })
 
     return (
-      <div> {articles} </div>
+      <div>
+        {articles}
+
+        <PaginationList />
+      </div>
     )
   }
 

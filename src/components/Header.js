@@ -10,8 +10,8 @@ const Header = () => (
     </div>
     <div className='right menu'>
       <Link to='/' className='item'>Home</Link>
-      <a className='item'>Sign in</a>
-      <a className='item'>Sign up</a>
+      <a className='item' onClick={() => alert('work in progress')}>Sign in</a>
+      <a className='item' onClick={() => alert('work in progress')}>Sign up</a>
     </div>
   </div>
 )
