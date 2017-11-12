@@ -26,7 +26,7 @@ class PaginationList extends Component {
     })
 
     return (
-      <div className='ui link horizontal huge list'>
+      <div className='ui celled horizontal huge list'>
         {links}
       </div>
     )
@@ -34,7 +34,7 @@ class PaginationList extends Component {
 
   render () {
     return (
-      <div>
+      <div className='ui center aligned header'>
         {this.renderPagination(this.props.articlesCount)}
       </div>
     )
