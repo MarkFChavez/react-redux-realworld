@@ -17,7 +17,7 @@ class PaginationList extends Component {
 
   renderPagination (total) {
     const numberOfPages = (total % 20) ? (total / 20) + 1 : (total / 20)
-    const links = [...Array(numberOfPages).keys()].map(num => {
+    const links = [...Array(Math.round(numberOfPages)).keys()].map(num => {
       const actual = num + 1
       const page = (actual - 1) * 10
       return (

@@ -1,12 +1,12 @@
 import api from '../api'
 import * as types from '../constants/actionTypes'
 
-export const fetchGlobalArticles = (offset = 0) => {
+export const fetchGlobalArticles = (offset = 0, tag = '') => {
   return dispatch => {
     dispatch({ type: types.SET_APP_LOADING })
     dispatch({ type: types.UNSET_ARTICLES_COUNT })
 
-    api.Articles.all(offset)
+    api.Articles.all(offset, tag)
       .then(response => {
         dispatch({ type: types.SET_ARTICLES, payload: response.data.articles })
         dispatch({ type: types.UNSET_APP_LOADING })
@@ -17,6 +17,10 @@ export const fetchGlobalArticles = (offset = 0) => {
         dispatch({ type: types.UNSET_APP_LOADING })
       })
   }
+}
+
+export const fetchGlobalArticlesByTag = (tag) => {
+  return fetchGlobalArticles(0, tag)
 }
 
 export const fetchArticle = slug => {

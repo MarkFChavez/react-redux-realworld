@@ -1,20 +1,33 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchGlobalArticlesByTag } from '../actions'
 
-const TagList = props => {
-  const tags = props.tags.map(tag => {
+const dispatchToProps = dispatch => bindActionCreators({ fetchGlobalArticlesByTag }, dispatch)
+
+class TagList extends Component {
+
+  tagClick (tag) {
+    this.props.fetchGlobalArticlesByTag(tag)
+  }
+
+  render () {
+    const tags = this.props.tags.map(tag => {
+      return (
+        <a key={tag} className='ui label' onClick={() => this.tagClick(tag)}> {tag} </a>
+      )
+    })
+
     return (
-      <a className='ui label'> {tag} </a>
-    )
-  })
-
-  return (
-    <div className='ui black segment'>
-      <div className='ui tag labels'>
-        <div className='ui header'> Tags </div>
-        {tags}
+      <div className='ui black segment'>
+        <div className='ui tag labels'>
+          <div className='ui header'> Tags </div>
+          {tags}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+
 }
 
-export default TagList
+export default connect(null, dispatchToProps)(TagList)
