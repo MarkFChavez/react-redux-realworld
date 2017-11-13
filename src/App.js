@@ -4,26 +4,20 @@ import Header from './components/Header'
 import ArticleListPage from './components/ArticleListPage'
 import ArticleItemPage from './components/ArticleItemPage'
 
-class App extends Component {
-
-  render () {
-    return (
-      <div className='App'>
-        <div className='ui container'>
-          <div className='ui grid'>
-            <div className='column'>
-              <Header />
-              <Switch>
-                <Route exact path='/' component={ArticleListPage} />
-                <Route path='/articles/:slug' component={ArticleItemPage} />
-              </Switch>
-            </div>
-          </div>
+const App = () => (
+  <div className='App'>
+    <div className='ui container'>
+      <div className='ui grid'>
+        <div className='column'>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={ArticleListPage} />
+            <Route path='/articles/:slug' component={ArticleItemPage} />
+          </Switch>
         </div>
       </div>
-    )
-  }
-
-}
+    </div>
+  </div>
+)
 
 export default App;

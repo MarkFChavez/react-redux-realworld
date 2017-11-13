@@ -5,8 +5,6 @@ const initialState = {
   articlesCount: null
 }
 
-// appLoading {Boolean}
-// articlesCount {Integer}
 const commons = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_APP_LOADING:
