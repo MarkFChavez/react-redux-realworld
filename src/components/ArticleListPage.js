@@ -24,33 +24,17 @@ class ArticlesPage extends Component {
       .catch(error => console.log(error))
   }
 
-  renderTagList (list) {
-    if (!list) { return null }
-
-    const tags = list.map(item => {
-      return <div key={item} className='ui tag label'> {item} </div>
-    })
-
-    return (
-      <div style={{ marginTop: '20px' }}>
-        {tags}
-      </div>
-    )
-  }
-
   render () {
     if (this.props.commons.appLoading) {
       return (
         <div className="ui active centered inline loader"></div>
       )
     }
-
     const articles = this.props.articles.map(article => {
       return (
         <ArticleRow key={article.slug} article={article} />
       )
     })
-
     return (
       <div>
         <div className='ui two column stackable grid'>
