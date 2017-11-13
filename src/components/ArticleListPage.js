@@ -20,14 +20,14 @@ class ArticlesPage extends Component {
   }
 
   renderTagList (list) {
-    const l = list.map(item => {
+    const tags = list.map(item => {
       return <div key={item} className='ui tag label'> {item} </div>
     })
 
     if (list.length > 0) {
       return (
         <div style={{ marginTop: '20px' }}>
-          {l}
+          {tags}
         </div>
       )
     }
@@ -37,7 +37,9 @@ class ArticlesPage extends Component {
 
   render () {
     if (this.props.commons.appLoading) {
-      return <div> loading ... </div>
+      return (
+        <div class="ui active centered inline loader"></div>
+      )
     }
 
     const articles = this.props.articles.map(article => {

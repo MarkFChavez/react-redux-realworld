@@ -26,7 +26,9 @@ class ArticleItemPage extends Component {
   render () {
     const { article } = this.props
     if (this.props.commons.appLoading || !article) {
-      return <div> loading... </div>
+      return (
+        <div className='ui active centered inline loader'></div>
+      )
     }
 
     const innerHtml = { __html: markdown.toHTML(article.body) }
