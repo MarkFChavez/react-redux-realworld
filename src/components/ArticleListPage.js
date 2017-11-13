@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { fetchGlobalArticles } from '../actions'
 import { Link } from 'react-router-dom'
 import PaginationList from './PaginationList'
+import TagList from './TagList'
 import ArticleRow from './ArticleRow'
 
 const stateToProps = ({ articles, commons }) => ({ articles, commons })
@@ -44,8 +45,19 @@ class ArticlesPage extends Component {
 
     return (
       <div>
-        {articles}
-        <PaginationList />
+        <div className='ui two column grid'>
+          <div className='twelve wide column'>
+            {articles}
+          </div>
+          <div className='four wide column'>
+            <TagList />
+          </div>
+        </div>
+        <div className='ui grid'>
+          <div className='column'>
+            <PaginationList />
+          </div>
+        </div>
       </div>
     )
   }
