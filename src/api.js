@@ -7,7 +7,7 @@ const request = {
 }
 
 const Articles = {
-  all: (offset, tag) => request.get(`${API_ROOT}/articles?limit=20&offset=${offset}&tag=${tag}`),
+  all: offset => request.get(`${API_ROOT}/articles?limit=20&offset=${offset}`),
   show: slug => request.get(`${API_ROOT}/articles/${slug}`),
 }
 
