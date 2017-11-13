@@ -17,6 +17,8 @@ class ArticlesPage extends Component {
 
   componentDidMount () {
     this.props.fetchGlobalArticles()
+
+    // GET TAG LIST
     api.Tags.all()
       .then(response => this.setState({ tags: response.data.tags }))
       .catch(error => console.log(error))
