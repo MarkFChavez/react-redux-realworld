@@ -4,14 +4,10 @@ import { bindActionCreators } from 'redux'
 import { fetchGlobalArticles } from '../actions'
 import { Link } from 'react-router-dom'
 import PaginationList from './PaginationList'
+import ArticleRow from './ArticleRow'
 
-const stateToProps = ({articles, commons}) => (
-  { articles, commons }
-)
-
-const dispatchToProps = dispatch => {
-  return bindActionCreators({ fetchGlobalArticles }, dispatch)
-}
+const stateToProps = ({ articles, commons }) => ({ articles, commons })
+const dispatchToProps = dispatch => bindActionCreators({ fetchGlobalArticles }, dispatch)
 
 class ArticlesPage extends Component {
 
@@ -20,19 +16,17 @@ class ArticlesPage extends Component {
   }
 
   renderTagList (list) {
+    if (!list) { return null }
+
     const tags = list.map(item => {
       return <div key={item} className='ui tag label'> {item} </div>
     })
 
-    if (list.length > 0) {
-      return (
-        <div style={{ marginTop: '20px' }}>
-          {tags}
-        </div>
-      )
-    }
-
-    return null
+    return (
+      <div style={{ marginTop: '20px' }}>
+        {tags}
+      </div>
+    )
   }
 
   render () {
@@ -44,27 +38,13 @@ class ArticlesPage extends Component {
 
     const articles = this.props.articles.map(article => {
       return (
-        <div key={article.slug} className="ui green segment">
-          <img className='ui left floated image' src={article.author.image} width={64} height={64} />
-          <div className='ui right floated'>
-            <div className='ui medium header'>
-              <Link to={`/articles/${article.slug}`}>{article.title}</Link>
-            </div>
-            <p> {article.description} </p>
-            <div>
-              <i className="like icon"></i> {article.favoritesCount} favorites
-            </div>
-            {this.renderTagList(article.tagList)}
-          </div>
-          <div style={{ clear: 'both' }}></div>
-        </div>
+        <ArticleRow key={article.slug} article={article} />
       )
     })
 
     return (
       <div>
         {articles}
-
         <PaginationList />
       </div>
     )
