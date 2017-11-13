@@ -11,6 +11,11 @@ const Articles = {
   show: slug => request.get(`${API_ROOT}/articles/${slug}`)
 }
 
+const Tags = {
+  all: () => request.get(`${API_ROOT}/tags`)
+}
+
 export default {
-  Articles
+  Articles,
+  Tags
 }

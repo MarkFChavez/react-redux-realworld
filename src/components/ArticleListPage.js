@@ -6,14 +6,20 @@ import { Link } from 'react-router-dom'
 import PaginationList from './PaginationList'
 import TagList from './TagList'
 import ArticleRow from './ArticleRow'
+import api from '../api'
 
 const stateToProps = ({ articles, commons }) => ({ articles, commons })
 const dispatchToProps = dispatch => bindActionCreators({ fetchGlobalArticles }, dispatch)
 
 class ArticlesPage extends Component {
 
+  state = { tags: [] }
+
   componentDidMount () {
     this.props.fetchGlobalArticles()
+    api.Tags.all()
+      .then(response => this.setState({ tags: response.data.tags }))
+      .catch(error => console.log(error))
   }
 
   renderTagList (list) {
@@ -33,7 +39,7 @@ class ArticlesPage extends Component {
   render () {
     if (this.props.commons.appLoading) {
       return (
-        <div class="ui active centered inline loader"></div>
+        <div className="ui active centered inline loader"></div>
       )
     }
 
@@ -45,12 +51,12 @@ class ArticlesPage extends Component {
 
     return (
       <div>
-        <div className='ui two column grid'>
+        <div className='ui two column stackable grid'>
           <div className='twelve wide column'>
             {articles}
           </div>
           <div className='four wide column'>
-            <TagList />
+            <TagList tags={this.state.tags} />
           </div>
         </div>
         <div className='ui grid'>
