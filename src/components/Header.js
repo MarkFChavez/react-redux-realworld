@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Header = () => (
+const Header = props => (
   <div className='ui stackable menu'>
     <div className='item'>
       <Link to='/' className='Header__text'>
-        <h1> conduit </h1>
+        <h1> {props.title} </h1>
       </Link>
     </div>
     <div className='right menu'>

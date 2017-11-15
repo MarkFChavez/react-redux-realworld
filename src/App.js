@@ -9,7 +9,8 @@ const App = () => (
     <div className='ui container'>
       <div className='ui grid'>
         <div className='column'>
-          <Header />
+          <Header title='conduit' />
+
           <Switch>
             <Route exact path='/' component={ArticleListPage} />
             <Route path='/articles/:slug' component={ArticleItemPage} />
