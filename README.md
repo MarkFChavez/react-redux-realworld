@@ -9,8 +9,10 @@ There is already a react-redux version of this.
 
 **Demo:**
 https://react-redux.realworld.io
+
 **Repository:**
 https://github.com/gothinkster/realworld
+
 **API Documentation:**
 https://github.com/gothinkster/realworld/tree/master/api#endpoints
 
