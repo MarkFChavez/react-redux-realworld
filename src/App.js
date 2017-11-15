@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/commons/Header'
 import ArticlesContainer from './containers/ArticlesContainer'
-import ArticleItem from './components/ArticleItem'
+import ArticlePreviewContainer from './containers/ArticlePreviewContainer'
 
 const App = () => (
   <div className='App'>
@@ -13,7 +13,7 @@ const App = () => (
 
           <Switch>
             <Route exact path='/' component={ArticlesContainer} />
-            <Route path='/articles/:slug' component={ArticleItem} />
+            <Route path='/articles/:slug' component={ArticlePreviewContainer} />
           </Switch>
         </div>
       </div>
