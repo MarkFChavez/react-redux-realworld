@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
-import ArticleListPage from './components/ArticleListPage'
-import ArticleItemPage from './components/ArticleItemPage'
+import ArticlesContainer from './containers/ArticlesContainer'
+import ArticleItem from './components/ArticleItem'
 
 const App = () => (
   <div className='App'>
@@ -12,8 +12,8 @@ const App = () => (
           <Header title='conduit' />
 
           <Switch>
-            <Route exact path='/' component={ArticleListPage} />
-            <Route path='/articles/:slug' component={ArticleItemPage} />
+            <Route exact path='/' component={ArticlesContainer} />
+            <Route path='/articles/:slug' component={ArticleItem} />
           </Switch>
         </div>
       </div>
