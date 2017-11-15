@@ -3,19 +3,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import ArticleList from '../components/ArticleList'
 import TagList from '../components/TagList'
-import { fetchGlobalArticles } from '../actions'
+import { fetchGlobalArticles, fetchTags } from '../actions'
 import api from '../api'
 
 class ArticlesContainer extends Component {
 
-  state = { tags: [] }
-
   componentDidMount () {
     this.props.fetchGlobalArticles()
-    // GET TAG LIST
-    api.Tags.all()
-      .then(response => this.setState({ tags: response.data.tags }))
-      .catch(error => console.log(error))
+    this.props.fetchTags()
   }
 
   render () {
@@ -30,7 +25,7 @@ class ArticlesContainer extends Component {
         </div>
 
         <div className='four wide column'>
-          <TagList tags={this.state.tags} />
+          <TagList tags={this.props.tags} />
         </div>
       </div>
     )
@@ -38,7 +33,7 @@ class ArticlesContainer extends Component {
 
 }
 
-const stateToProps = ({ articles, commons }) => ({ articles, commons })
-const dispatchToProps = dispatch => bindActionCreators({ fetchGlobalArticles }, dispatch)
+const stateToProps = ({ articles, tags, commons }) => ({ articles, tags, commons })
+const dispatchToProps = dispatch => bindActionCreators({ fetchGlobalArticles, fetchTags }, dispatch)
 
 export default connect(stateToProps, dispatchToProps)(ArticlesContainer)
