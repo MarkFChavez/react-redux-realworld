@@ -20,9 +20,7 @@ class ArticlesContainer extends Component {
 
   render () {
     if (this.props.commons.appLoading) {
-      return (
-        <div className="ui active centered inline loader"></div>
-      )
+      return <div className="ui active centered inline loader"></div>
     }
 
     return (

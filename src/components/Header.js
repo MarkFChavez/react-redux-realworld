@@ -8,10 +8,11 @@ const Header = props => (
         <h1> {props.title} </h1>
       </Link>
     </div>
+
     <div className='right menu'>
       <Link to='/' className='item'>Home</Link>
-      <a className='item' onClick={() => alert('work in progress')}>Sign in</a>
-      <a className='item' onClick={() => alert('work in progress')}>Sign up</a>
+      <Link to='/' className='item' onClick={() => alert('work in progress')}>Sign in</Link>
+      <Link to='/' className='item' onClick={() => alert('work in progress')}>Sign up</Link>
     </div>
   </div>
 )
