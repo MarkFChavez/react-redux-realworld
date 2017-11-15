@@ -1,23 +1,18 @@
-import React, { Component } from 'react'
-class TagList extends Component {
+import React from 'react'
 
-  render () {
-    const tags = this.props.tags.map(tag => {
-      return (
-        <a key={tag} className='ui label'> {tag} </a>
-      )
-    })
+const TagList = props => {
+  const tags = props.tags.map(tag => (
+    <a key={tag} className='ui label'> {tag} </a>
+  ))
 
-    return (
-      <div className='ui black segment'>
-        <div className='ui tag labels'>
-          <div className='ui header'> Tags </div>
-          {tags}
-        </div>
+  return (
+    <div className='ui black segment tag--list'>
+      <div className='ui tag labels'>
+        <div className='ui header'> Tags </div>
+        {tags}
       </div>
-    )
-  }
-
+    </div>
+  )
 }
 
 export default TagList
