@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Header from './components/Header'
+import Header from './components/commons/Header'
 import ArticlesContainer from './containers/ArticlesContainer'
 import ArticleItem from './components/ArticleItem'
 

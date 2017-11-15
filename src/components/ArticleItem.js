@@ -38,9 +38,9 @@ class ArticleItemPage extends Component {
         <p dangerouslySetInnerHTML={innerHtml}>
         </p>
         <div>
-          <img src={article.author.image} width={32} height={32} />
+          <img alt='' src={article.author.image} width={32} height={32} />
           &nbsp;
-          created by <a href='#'>{article.author.username}</a> {article.createdAt}
+          created by <a>{article.author.username}</a> {article.createdAt}
         </div>
       </div>
     )

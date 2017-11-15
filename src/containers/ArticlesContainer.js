@@ -3,14 +3,23 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import ArticleList from '../components/ArticleList'
 import TagList from '../components/TagList'
+import Pagination from '../components/commons/Pagination'
 import { fetchGlobalArticles, fetchTags } from '../actions'
-import api from '../api'
 
 class ArticlesContainer extends Component {
+
+  constructor (props) {
+    super(props)
+    this.onPageClick = this.onPageClick.bind(this)
+  }
 
   componentDidMount () {
     this.props.fetchGlobalArticles()
     this.props.fetchTags()
+  }
+
+  onPageClick (page) {
+    this.props.fetchGlobalArticles(page)
   }
 
   render () {
@@ -19,13 +28,21 @@ class ArticlesContainer extends Component {
     }
 
     return (
-      <div className='ui two column stackable grid articles--container'>
-        <div className='twelve wide column'>
-          <ArticleList articles={this.props.articles} />
+      <div className='articles--container'>
+        <div className='ui two column stackable grid'>
+          <div className='twelve wide column'>
+            <ArticleList articles={this.props.articles} />
+          </div>
+
+          <div className='four wide column'>
+            <TagList tags={this.props.tags} />
+          </div>
         </div>
 
-        <div className='four wide column'>
-          <TagList tags={this.props.tags} />
+        <div className='ui grid'>
+          <div className='column'>
+            <Pagination count={this.props.commons.articlesCount} onPageClick={this.onPageClick} />
+          </div>
         </div>
       </div>
     )
@@ -33,7 +50,10 @@ class ArticlesContainer extends Component {
 
 }
 
-const stateToProps = ({ articles, tags, commons }) => ({ articles, tags, commons })
+const stateToProps = ({ articles, tags, commons }) => (
+  { articles, tags, commons }
+)
+
 const dispatchToProps = dispatch => bindActionCreators({ fetchGlobalArticles, fetchTags }, dispatch)
 
 export default connect(stateToProps, dispatchToProps)(ArticlesContainer)

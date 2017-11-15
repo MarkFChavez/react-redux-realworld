@@ -15,7 +15,7 @@ const renderTagList = list => {
 
 const ArticleRow = ({ article }) => (
   <div className="ui green segment">
-    <img className='ui left floated image' src={article.author.image} width={64} height={64} />
+    <img alt='' className='ui left floated image' src={article.author.image} width={64} height={64} />
     <div className='ui right floated'>
       <div className='ui medium header'>
         <Link to={`/articles/${article.slug}`}>{article.title}</Link>
