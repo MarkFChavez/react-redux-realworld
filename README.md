@@ -36,6 +36,14 @@ http://conduit.markjoelchavez.com.s3-website-us-east-1.amazonaws.com/
 
 ### Changelogs
 
+**11/12/2017** (1st Major Release)
+- Header
+- Articles feed
+- Show article page
+- Show tags for an article
+- Semantic UI setup
+- Loading indicators
+
 **11/16/2017** (2nd Major Release)
 - Tag list
 - Clicking a tag should render all tag-related articles
