@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { markdown } from 'markdown'
 
 const ArticleItem = ({ article }) => {
@@ -17,6 +18,10 @@ const ArticleItem = ({ article }) => {
       </div>
     </div>
   )
+}
+
+ArticleItem.propTypes = {
+  article: PropTypes.object.isRequired
 }
 
 export default ArticleItem

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ArticleRow from './ArticleRow'
 
 const ArticleList = props => {
@@ -9,6 +10,10 @@ const ArticleList = props => {
   return (
     <div className='article--list'> {articles} </div>
   )
+}
+
+ArticleList.propTypes = {
+  articles: PropTypes.array.isRequired
 }
 
 export default ArticleList

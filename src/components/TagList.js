@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const TagList = props => {
   const tags = props.tags.map(tag => (
@@ -13,6 +14,11 @@ const TagList = props => {
       </div>
     </div>
   )
+}
+
+TagList.propTypes = {
+  tags: PropTypes.array,
+  onTagClick: PropTypes.func
 }
 
 export default TagList
