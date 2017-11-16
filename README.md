@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 This project is basically similar to [https://github.com/gothinkster/realworld](https://github.com/gothinkster/realworld) but uses a different approach but
 same libraries.
@@ -14,7 +14,7 @@ To make an entirely new copy of the app using acquired knowledge.
 **WEBSITE URL**
 http://conduit.markjoelchavez.com.s3-website-us-east-1.amazonaws.com/
 
-### Changelogs
+# Changelogs
 
 **11/12/2017** (1st Major Release)
 - Header
