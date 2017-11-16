@@ -15,7 +15,7 @@ class ArticlesContainer extends Component {
     this.onTagClick = this.onTagClick.bind(this)
 
     // local component state
-    this.state = { selectedTag: '' }
+    this.state = { selectedTag: '', selectedPage: 0 }
   }
 
   componentDidMount () {
@@ -24,6 +24,7 @@ class ArticlesContainer extends Component {
   }
 
   onPageClick (page) {
+    this.setState({ selectedPage: page })
     this.props.fetchGlobalArticles(page, this.state.selectedTag)
   }
 
@@ -52,7 +53,7 @@ class ArticlesContainer extends Component {
 
         <div className='ui grid'>
           <div className='column'>
-            <Pagination count={this.props.commons.articlesCount} onPageClick={this.onPageClick} />
+            <Pagination current={this.state.selectedPage} count={this.props.commons.articlesCount} onPageClick={this.onPageClick} />
           </div>
         </div>
       </div>
