@@ -1,7 +1,7 @@
 import React from 'react'
 import { markdown } from 'markdown'
 
-const ArticleItemPage = ({ article }) => {
+const ArticleItem = ({ article }) => {
   const innerHtml = { __html: markdown.toHTML(article.body) }
   return (
     <div className='article--item'>
@@ -19,4 +19,4 @@ const ArticleItemPage = ({ article }) => {
   )
 }
 
-export default ArticleItemPage
+export default ArticleItem

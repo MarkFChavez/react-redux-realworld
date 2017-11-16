@@ -2,7 +2,7 @@ import React from 'react'
 
 const TagList = props => {
   const tags = props.tags.map(tag => (
-    <a key={tag} className='ui label'> {tag} </a>
+    <a key={tag} className='ui label' onClick={() => props.onTagClick(tag)}> {tag} </a>
   ))
 
   return (

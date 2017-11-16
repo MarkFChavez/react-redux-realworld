@@ -10,7 +10,12 @@ class ArticlesContainer extends Component {
 
   constructor (props) {
     super(props)
+
     this.onPageClick = this.onPageClick.bind(this)
+    this.onTagClick = this.onTagClick.bind(this)
+
+    // local component state
+    this.state = { selectedTag: '' }
   }
 
   componentDidMount () {
@@ -19,7 +24,13 @@ class ArticlesContainer extends Component {
   }
 
   onPageClick (page) {
-    this.props.fetchGlobalArticles(page)
+    this.props.fetchGlobalArticles(page, this.state.selectedTag)
+  }
+
+  onTagClick (tag) {
+    const firstPage = 0
+    this.props.fetchGlobalArticles(firstPage, tag)
+    this.setState({ selectedTag: tag })
   }
 
   render () {
@@ -35,7 +46,7 @@ class ArticlesContainer extends Component {
           </div>
 
           <div className='four wide column'>
-            <TagList tags={this.props.tags} />
+            <TagList tags={this.props.tags} onTagClick={this.onTagClick} />
           </div>
         </div>
 
@@ -54,6 +65,8 @@ const stateToProps = ({ articles, tags, commons }) => (
   { articles, tags, commons }
 )
 
-const dispatchToProps = dispatch => bindActionCreators({ fetchGlobalArticles, fetchTags }, dispatch)
+const dispatchToProps = dispatch => (
+  bindActionCreators({ fetchGlobalArticles, fetchTags }, dispatch)
+)
 
 export default connect(stateToProps, dispatchToProps)(ArticlesContainer)
