@@ -2,17 +2,12 @@ import React, { Component } from 'react'
 import ArticleItem from '../components/ArticleItem'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchArticle, unsetArticle } from '../actions'
+import { fetchArticle } from '../actions'
 
 class ArticlePreviewContainer extends Component {
 
   componentDidMount () {
-    const { slug } = this.props.match.params
-    this.props.fetchArticle(slug)
-  }
-
-  componentWillUnmount () {
-    this.props.unsetArticle()
+    this.props.fetchArticle(this.props.match.params.slug)
   }
 
   render () {
@@ -32,12 +27,6 @@ class ArticlePreviewContainer extends Component {
 }
 
 const stateToProps = ({ article, commons }) => ({ article, commons })
-const dispatchToProps = dispatch => {
-  return bindActionCreators({
-    fetchArticle,
-    unsetArticle
-  }, dispatch)
-}
-
+const dispatchToProps = dispatch => bindActionCreators({ fetchArticle }, dispatch)
 
 export default connect(stateToProps, dispatchToProps)(ArticlePreviewContainer)

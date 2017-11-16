@@ -34,5 +34,3 @@ export const fetchArticle = slug => {
       })
   }
 }
-
-export const unsetArticle = () => ({ type: types.UNSET_ARTICLE })

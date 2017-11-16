@@ -1,7 +1,6 @@
 // ARTICLE
 export const SET_ARTICLES = 'SET_ARTICLES'
 export const SET_ARTICLE = 'SET_ARTICLE'
-export const UNSET_ARTICLE = 'UNSET_ARTICLE'
 
 // TAG
 export const SET_TAGS = 'SET_TAGS'
