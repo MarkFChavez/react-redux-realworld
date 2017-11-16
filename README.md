@@ -11,9 +11,6 @@ To make an entirely new copy of the app using acquired knowledge.
 **UI:**
 - Semantic UI (https://semantic-ui.com/)
 
-**WEBSITE URL**
-http://conduit.markjoelchavez.com.s3-website-us-east-1.amazonaws.com/
-
 # Changelogs
 
 **11/12/2017** (1st Major Release)
