@@ -31,3 +31,15 @@ To make an entirely new copy of the app using [idiomatic redux](https://github.c
 
 **WEBSITE URL**
 http://conduit.markjoelchavez.com.s3-website-us-east-1.amazonaws.com/
+
+
+
+### Changelogs
+
+**11/16/2017** (2nd Major Release)
+- Tag list
+- Clicking a tag should render all tag-related articles
+- Refactor architecture to have a division between container and presentational components
+- Add tag list on redux
+- Bold current page (pagination)
+- Apply propTypes to every presentational component
