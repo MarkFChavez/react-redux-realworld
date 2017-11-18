@@ -2,27 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import NavigationLinks from '../components/NavigationLinks'
 
 class HeaderContainer extends Component {
-  renderNavigationLinks (isLoggedIn) {
-    if (isLoggedIn) {
-      return (
-        <div className='right menu'>
-          <Link to='/' className='item'>Home</Link>
-          <Link to='/' className='item'>Logout</Link>
-        </div>
-      )
-    }
-
-    return (
-      <div className='right menu'>
-        <Link to='/' className='item'>Home</Link>
-        <Link to='/signin' className='item'>Sign in</Link>
-        <Link to='/signup' className='item'>Sign up</Link>
-      </div>
-    )
-  }
-
   render () {
     return (
       <div className='ui stackable menu'>
@@ -32,7 +14,7 @@ class HeaderContainer extends Component {
           </Link>
         </div>
 
-        {this.renderNavigationLinks(this.props.isLoggedIn)}
+        <NavigationLinks isLoggedIn={this.props.isLoggedIn} />
       </div>
     )
   }
