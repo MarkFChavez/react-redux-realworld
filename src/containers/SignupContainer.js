@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Form from '../components/commons/Form'
-import Field from '../components/commons/FormField'
+import FormField from '../components/commons/FormField'
+import FormFooter from '../components/commons/FormFooter'
+import { Link } from 'react-router-dom'
 
 class SignupContainer extends Component {
 
@@ -20,16 +22,20 @@ class SignupContainer extends Component {
         <div className='ui segment'>
           <center>
             <h1>
-              <i className='add user icon'></i> Sign up
+              <i className='send icon'></i> Sign up
             </h1>
           </center>
 
           <Form onSubmit={this.onSubmit}>
-            <Field name='email' type='text' placeholder='Email address' icon='mail' />
-            <Field name='password' type='password' placeholder='Your password' icon='lock' />
-            <Field name='confirm_password' type='password' placeholder='Confirm your password' icon='lock' />
+            <FormField name='email' type='text' placeholder='Email address' icon='mail' />
+            <FormField name='password' type='password' placeholder='Your password' icon='lock' />
+            <FormField name='confirm_password' type='password' placeholder='Confirm your password' icon='lock' />
 
-            <button className='ui green huge button' type='submit'>Submit</button>
+            <FormFooter>
+              <button className='ui green button' type='submit'>Submit</button>
+              <div className='or'></div>
+              <Link to='/signin' className='ui blue button'>Sign in</Link>
+            </FormFooter>
           </Form>
         </div>
       </div>
