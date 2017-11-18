@@ -17,7 +17,7 @@ const Pagination = props => {
 }
 
 Pagination.propTypes = {
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
   current: PropTypes.number.isRequired,
   onPageClick: PropTypes.func.isRequired
 }
