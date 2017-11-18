@@ -31,11 +31,9 @@ class SigninContainer extends Component {
             <h1>
               <i className='send icon'></i> Sign in
             </h1>
-
-            {this.props.isLoggedIn && <div> logged in </div>}
           </center>
 
-          <Form onSubmit={this.onSubmit}>
+          <Form loading={this.props.authLoading} onSubmit={this.onSubmit}>
             <FormField
               name='email'
               value={this.state.email}
