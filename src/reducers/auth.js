@@ -14,7 +14,7 @@ const auth = (state = initialState, action) => {
     case types.AUTH_FAILED:
       return initialState
     case types.AUTH_RESET:
-      return { ...state, isLoggedIn: !!localStorage.getItem('jwt') }
+      return { ...initialState, isLoggedIn: !!localStorage.getItem('jwt') }
     default:
       return state
   }

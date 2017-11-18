@@ -17,7 +17,13 @@ export const signin = ({ email, password }, history) => {
 }
 
 export const signout = history => {
-  localStorage.removeItem('jwt')
-  history.push('/signin')
-  return { type: types.AUTH_RESET }
+  return dispatch => {
+    dispatch({ type: types.SET_APP_LOADING })
+    localStorage.removeItem('jwt')
+    setTimeout(() => {
+      history.push('/signin')
+      dispatch({ type: types.AUTH_RESET })
+      dispatch({ type: types.UNSET_APP_LOADING })
+    }, 500)
+  }
 }
