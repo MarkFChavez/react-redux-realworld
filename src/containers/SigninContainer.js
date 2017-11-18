@@ -6,7 +6,7 @@ class SigninContainer extends Component {
 
   constructor (props) {
     super(props)
-    this.onSubmit.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   onSubmit (e) {
