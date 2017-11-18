@@ -2,18 +2,25 @@ import React, { Component } from 'react'
 import Form from '../components/commons/Form'
 import FormField from '../components/commons/FormField'
 import FormFooter from '../components/commons/FormFooter'
+import { signin } from '../actions'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 class SigninContainer extends Component {
 
   constructor (props) {
     super(props)
+
     this.onSubmit = this.onSubmit.bind(this)
+
+    this.state = { email: '', password: '' }
   }
 
   onSubmit (e) {
     e.preventDefault()
-    console.log('form submitted')
+    const { email, password } = this.state
+    this.props.signin(email, password)
   }
 
   render () {
@@ -24,11 +31,26 @@ class SigninContainer extends Component {
             <h1>
               <i className='send icon'></i> Sign in
             </h1>
+
+            {this.props.isLoggedIn && <div> logged in </div>}
           </center>
 
           <Form onSubmit={this.onSubmit}>
-            <FormField name='email' type='text' placeholder='Email address' icon='mail' />
-            <FormField name='password' type='password' placeholder='Your password' icon='lock' />
+            <FormField
+              name='email'
+              value={this.state.email}
+              onChange={e => this.setState({ email: e.target.value })}
+              type='text'
+              placeholder='Email address'
+              icon='mail' />
+
+            <FormField
+              name='password'
+              value={this.state.password}
+              onChange={e => this.setState({ password: e.target.value })}
+              type='password'
+              placeholder='Your password'
+              icon='lock' />
 
             <FormFooter>
               <button className='ui green button' type='submit'>Submit</button>
@@ -45,4 +67,13 @@ class SigninContainer extends Component {
 
 }
 
-export default SigninContainer
+const stateToProps = ({ auth }) => (
+  {
+    isLoggedIn: auth.isLoggedIn,
+    currentUser: auth.currentUser,
+    authLoading: auth.authLoading
+  }
+)
+const dispatchToProps = dispatch => bindActionCreators({ signin }, dispatch)
+
+export default connect(stateToProps, dispatchToProps)(SigninContainer)

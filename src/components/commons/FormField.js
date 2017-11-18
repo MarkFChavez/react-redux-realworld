@@ -9,15 +9,23 @@ const FormField = props => (
     <label>
       <i className={`${props.icon} icon`}></i> {sanitize(props.name, '_', ' ')}
     </label>
-    <input type={props.type} name={props.name} placeholder={props.placeholder} />
+    <input
+      type={props.type}
+      name={props.name}
+      value={props.value}
+      placeholder={props.placeholder}
+      onChange={props.onChange}
+      />
   </div>
 )
 
 FormField.propTypes = {
-  icon: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired
+  icon: PropTypes.string,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
 }
 
 export default FormField

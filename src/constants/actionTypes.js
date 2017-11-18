@@ -2,6 +2,11 @@
 export const SET_ARTICLES = 'SET_ARTICLES'
 export const SET_ARTICLE = 'SET_ARTICLE'
 
+// AUTH
+export const AUTH_STARTED = 'AUTH_STARTED'
+export const AUTH_SUCCESS = 'AUTH_SUCCESS'
+export const AUTH_FAILED = 'AUTH_FAILED'
+
 // TAG
 export const SET_TAGS = 'SET_TAGS'
 
