@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import NavigationLinks from '../components/NavigationLinks'
+import { bindActionCreators } from '../../../../../../Library/Caches/typescript/2.6/node_modules/redux';
+import { signout } from '../actions'
+import { withRouter } from 'react-router-dom'
 
 class HeaderContainer extends Component {
 
@@ -12,7 +15,7 @@ class HeaderContainer extends Component {
   }
 
   onLogout () {
-    console.log('logout')
+    this.props.signout(this.props.history)
   }
 
   render () {
@@ -40,4 +43,8 @@ const stateToProps = state => (
   { isLoggedIn: state.auth.isLoggedIn }
 )
 
-export default connect(stateToProps)(HeaderContainer)
+const dispatchToProps = dispatch => (
+  bindActionCreators({ signout }, dispatch)
+)
+
+export default connect(stateToProps, dispatchToProps)(HeaderContainer)

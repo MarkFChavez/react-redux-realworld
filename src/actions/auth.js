@@ -1,6 +1,5 @@
 import * as types from '../constants/actionTypes'
 import api from '../api'
-import { browserHistory } from 'react-router'
 
 export const signin = ({ email, password }, history) => {
   return dispatch => {
@@ -8,11 +7,16 @@ export const signin = ({ email, password }, history) => {
     api.Auth.signin(email, password)
       .then(response => {
         localStorage.setItem('jwt', response.data.user.token)
-        dispatch({ type: types.AUTH_SUCCESS })
         history.push('/')
+        dispatch({ type: types.AUTH_SUCCESS })
       })
       .catch(error => {
         dispatch({ type: types.AUTH_FAILED })
       })
   }
+}
+
+export const signout = history => {
+  localStorage.removeItem('jwt')
+  return { type: types.AUTH_RESET }
 }

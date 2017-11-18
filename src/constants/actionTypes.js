@@ -6,6 +6,7 @@ export const SET_ARTICLE = 'SET_ARTICLE'
 export const AUTH_STARTED = 'AUTH_STARTED'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export const AUTH_FAILED = 'AUTH_FAILED'
+export const AUTH_RESET = 'AUTH_RESET'
 
 // TAG
 export const SET_TAGS = 'SET_TAGS'
