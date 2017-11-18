@@ -34,7 +34,7 @@ class SignupContainer extends Component {
             <FormFooter>
               <button className='ui green button' type='submit'>Submit</button>
               <div className='or'></div>
-              <Link to='/signin' className='ui blue button'>Sign in</Link>
+              <Link to='/signin' className='ui blue button'>I already have an account</Link>
             </FormFooter>
           </Form>
         </div>
