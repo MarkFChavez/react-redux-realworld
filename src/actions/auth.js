@@ -1,14 +1,15 @@
 import * as types from '../constants/actionTypes'
 import api from '../api'
-import { push } from 'react-router-redux'
+import { browserHistory } from 'react-router'
 
-export const signin = (email, password) => {
+export const signin = ({ email, password }, history) => {
   return dispatch => {
     dispatch({ type: types.AUTH_STARTED })
     api.Auth.signin(email, password)
       .then(response => {
-        dispatch({ type: types.AUTH_SUCCESS, payload: response.data.user })
-        dispatch(push('/'))
+        localStorage.setItem('jwt', response.data.user.token)
+        dispatch({ type: types.AUTH_SUCCESS })
+        history.push('/')
       })
       .catch(error => {
         dispatch({ type: types.AUTH_FAILED })

@@ -3,9 +3,8 @@ import { render } from 'react-dom'
 import App from './App'
 import store from './store/configureStore'
 import registerServiceWorker from './registerServiceWorker'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import { history } from './history'
 import 'semantic-ui-css/semantic.css'
 import './assets/css/styles.css'
 
@@ -16,9 +15,9 @@ config()
 
 render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <Router>
       <App />
-    </ConnectedRouter>
+    </Router>
   </Provider>
 , document.getElementById('root'));
 

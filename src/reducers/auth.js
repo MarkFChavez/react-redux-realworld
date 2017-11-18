@@ -1,9 +1,10 @@
 import * as types from '../constants/actionTypes'
 
+const getToken = localStorage.getItem('jwt')
+
 const initialState = {
   authLoading: false,
-  isLoggedIn: false,
-  currentUser: null
+  isLoggedIn: !!getToken,
 }
 
 const auth = (state = initialState, action) => {
@@ -11,7 +12,7 @@ const auth = (state = initialState, action) => {
     case types.AUTH_STARTED:
       return { ...state, authLoading: true }
     case types.AUTH_SUCCESS:
-      return { ...state, authLoading: false, isLoggedIn: true, currentUser: action.payload }
+      return { ...state, authLoading: false, isLoggedIn: !!getToken }
     case types.AUTH_FAILED:
       return initialState
     default:

@@ -20,7 +20,7 @@ class SigninContainer extends Component {
   onSubmit (e) {
     e.preventDefault()
     const { email, password } = this.state
-    this.props.signin(email, password)
+    this.props.signin({ email, password }, this.props.history)
   }
 
   render () {
@@ -68,7 +68,6 @@ class SigninContainer extends Component {
 const stateToProps = ({ auth }) => (
   {
     isLoggedIn: auth.isLoggedIn,
-    currentUser: auth.currentUser,
     authLoading: auth.authLoading
   }
 )
