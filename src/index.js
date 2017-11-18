@@ -4,8 +4,9 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import { Provider } from 'react-redux'
 import store from './store/configureStore'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { ConnectedRouter } from 'react-router-redux'
 import { config } from 'dotenv'
+import { history } from './history'
 import 'semantic-ui-css/semantic.css'
 import './assets/css/styles.css'
 
@@ -15,9 +16,9 @@ config()
 
 render(
   <Provider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <App />
-    </Router>
+    </ConnectedRouter>
   </Provider>
 , document.getElementById('root'));
 
