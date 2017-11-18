@@ -18,5 +18,6 @@ export const signin = ({ email, password }, history) => {
 
 export const signout = history => {
   localStorage.removeItem('jwt')
+  history.push('/signin')
   return { type: types.AUTH_RESET }
 }

@@ -47,4 +47,4 @@ const dispatchToProps = dispatch => (
   bindActionCreators({ signout }, dispatch)
 )
 
-export default connect(stateToProps, dispatchToProps)(HeaderContainer)
+export default withRouter(connect(stateToProps, dispatchToProps)(HeaderContainer))

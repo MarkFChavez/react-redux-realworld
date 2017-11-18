@@ -5,7 +5,6 @@ import ArticlesContainer from './containers/ArticlesContainer'
 import ArticlePreviewContainer from './containers/ArticlePreviewContainer'
 import SigninContainer from './containers/SigninContainer'
 import SignupContainer from './containers/SignupContainer'
-import { withRouter } from 'react-router-dom'
 
 class App extends Component {
   render () {
@@ -30,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App)
+export default App
