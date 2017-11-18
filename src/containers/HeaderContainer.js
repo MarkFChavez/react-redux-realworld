@@ -5,6 +5,16 @@ import { connect } from 'react-redux'
 import NavigationLinks from '../components/NavigationLinks'
 
 class HeaderContainer extends Component {
+
+  constructor (props) {
+    super(props)
+    this.onLogout = this.onLogout.bind(this)
+  }
+
+  onLogout () {
+    console.log('logout')
+  }
+
   render () {
     return (
       <div className='ui stackable menu'>
@@ -14,10 +24,11 @@ class HeaderContainer extends Component {
           </Link>
         </div>
 
-        <NavigationLinks isLoggedIn={this.props.isLoggedIn} />
+        <NavigationLinks isLoggedIn={this.props.isLoggedIn} onLogout={this.onLogout} />
       </div>
     )
   }
+
 }
 
 HeaderContainer.propTypes = {

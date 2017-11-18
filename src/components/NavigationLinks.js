@@ -1,12 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-const renderNavigationLinks = isLoggedIn => {
-  if (isLoggedIn) {
+const NavigationLinks = props => {
+  if (props.isLoggedIn) {
     return (
       <div className='right menu'>
         <Link to='/' className='item'>Home</Link>
-        <a className='item'>Logout</a>
+        <a className='item' onClick={props.onLogout}>Logout</a>
       </div>
     )
   }
@@ -20,6 +21,9 @@ const renderNavigationLinks = isLoggedIn => {
   )
 }
 
-const NavigationLinks = props => renderNavigationLinks(props.isLoggedIn)
+NavigationLinks.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  onLogout: PropTypes.func
+}
 
 export default NavigationLinks
