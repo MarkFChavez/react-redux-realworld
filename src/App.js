@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Header from './components/commons/Header'
+import Header from './containers/HeaderContainer'
 import ArticlesContainer from './containers/ArticlesContainer'
 import ArticlePreviewContainer from './containers/ArticlePreviewContainer'
 import SigninContainer from './containers/SigninContainer'
 import SignupContainer from './containers/SignupContainer'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 class App extends Component {
@@ -15,7 +14,7 @@ class App extends Component {
         <div className='ui container'>
           <div className='ui grid'>
             <div className='column'>
-              <Header title='conduit' isLoggedIn={this.props.isLoggedIn} />
+              <Header title='conduit' />
 
               <Switch>
                 <Route exact path='/' component={ArticlesContainer} />
@@ -31,8 +30,4 @@ class App extends Component {
   }
 }
 
-const stateToProps = state => (
-  { isLoggedIn: state.auth.isLoggedIn }
-)
-
-export default withRouter(connect(stateToProps)(App))
+export default withRouter(App)
