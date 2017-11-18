@@ -20,7 +20,7 @@ class SigninContainer extends Component {
         <div className='ui segment'>
           <center>
             <h1>
-              <i className='code icon'></i> Sign in
+              <i className='send icon'></i> Sign in
             </h1>
           </center>
 
