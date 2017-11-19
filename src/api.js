@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+if (localStorage.getItem('jwt')) {
+  axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('jwt')}`
+}
+
 const API_ROOT = 'http://conduit.productionready.io/api'
 
 const request = {
@@ -18,7 +22,8 @@ const Auth = {
       user: { email, password }
     }
     return request.post(`${API_ROOT}/users/login`, data)
-  }
+  },
+  current: () => request.get(`${API_ROOT}/user`)
 }
 
 const Tags = {

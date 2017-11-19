@@ -8,7 +8,7 @@ export const signin = ({ email, password }, history) => {
       .then(response => {
         localStorage.setItem('jwt', response.data.user.token)
         history.push('/')
-        dispatch({ type: types.AUTH_SUCCESS })
+        dispatch({ type: types.AUTH_SUCCESS, payload: response.data.user })
       })
       .catch(error => {
         dispatch({ type: types.AUTH_FAILED })
@@ -25,5 +25,15 @@ export const signout = history => {
       dispatch({ type: types.AUTH_RESET })
       dispatch({ type: types.UNSET_APP_LOADING })
     }, 500)
+  }
+}
+
+export const getCurrentUser = () => {
+  return dispatch => {
+    api.Auth.current()
+      .then(response => {
+        dispatch({ type: types.SET_USER, payload: response.data.user })
+      })
+      .catch(error => console.error(error))
   }
 }

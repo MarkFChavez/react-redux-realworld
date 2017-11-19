@@ -7,6 +7,7 @@ export const AUTH_STARTED = 'AUTH_STARTED'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export const AUTH_FAILED = 'AUTH_FAILED'
 export const AUTH_RESET = 'AUTH_RESET'
+export const SET_USER = 'SET_USER'
 
 // TAG
 export const SET_TAGS = 'SET_TAGS'

@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import Header from './containers/HeaderContainer'
 import ArticlesContainer from './containers/ArticlesContainer'
 import ArticlePreviewContainer from './containers/ArticlePreviewContainer'
 import SigninContainer from './containers/SigninContainer'
 import SignupContainer from './containers/SignupContainer'
+import { connect } from 'react-redux'
+import { getCurrentUser } from './actions'
+import { bindActionCreators } from 'redux'
 
 class App extends Component {
+
+  componentWillMount () {
+    // dispatch APP_LOAD; it sets the current user
+    if (localStorage.getItem('jwt')) {
+      this.props.getCurrentUser()
+    }
+  }
+
   render () {
     return (
       <div className='App'>
@@ -29,4 +40,8 @@ class App extends Component {
   }
 }
 
-export default App
+const dispatchToProps = dispatch => (
+  bindActionCreators({ getCurrentUser }, dispatch)
+)
+
+export default withRouter(connect(null, dispatchToProps)(App))
