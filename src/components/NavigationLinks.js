@@ -17,7 +17,7 @@ const NavigationLinks = props => {
     <div className='right menu'>
       <Link to='/' className='item'>Home</Link>
       <Link to='/signin' className='item'>Sign in</Link>
-      <Link to='/signup' className='item'>Sign up</Link>
+      {/* <Link to='/signup' className='item'>Sign up</Link> */}
     </div>
   )
 }

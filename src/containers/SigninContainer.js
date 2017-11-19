@@ -52,10 +52,10 @@ class SigninContainer extends Component {
 
             <FormFooter>
               <button className='ui green button' type='submit'>Submit</button>
-              <div className='or'></div>
+              {/* <div className='or'></div>
               <Link to='/signup' className='ui blue button'>
                 Create a new account
-              </Link>
+              </Link> */}
             </FormFooter>
           </Form>
         </div>
