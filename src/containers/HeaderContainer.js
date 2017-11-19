@@ -27,7 +27,11 @@ class HeaderContainer extends Component {
           </Link>
         </div>
 
-        <NavigationLinks isLoggedIn={this.props.isLoggedIn} onLogout={this.onLogout} />
+        <NavigationLinks
+          isLoggedIn={this.props.isLoggedIn}
+          currentUser={this.props.currentUser}
+          onLogout={this.onLogout}
+        />
       </div>
     )
   }
@@ -36,11 +40,12 @@ class HeaderContainer extends Component {
 
 HeaderContainer.propTypes = {
   title: PropTypes.string.isRequired,
-  isLoggedIn: PropTypes.bool
+  isLoggedIn: PropTypes.bool,
+  currentUser: PropTypes.object
 }
 
 const stateToProps = state => (
-  { isLoggedIn: state.auth.isLoggedIn }
+  { isLoggedIn: state.auth.isLoggedIn, currentUser: state.auth.currentUser }
 )
 
 const dispatchToProps = dispatch => (

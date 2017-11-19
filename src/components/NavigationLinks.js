@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 const NavigationLinks = props => {
-  if (props.isLoggedIn) {
+  if (props.currentUser) {
     return (
       <div className='right menu'>
         <Link to='/' className='item'>Home</Link>
+        <Link to='/profile' className='item'>{props.currentUser.username}</Link>
         <a className='item' onClick={props.onLogout}>Logout</a>
       </div>
     )

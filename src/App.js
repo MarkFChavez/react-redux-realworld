@@ -5,6 +5,7 @@ import ArticlesContainer from './containers/ArticlesContainer'
 import ArticlePreviewContainer from './containers/ArticlePreviewContainer'
 import SigninContainer from './containers/SigninContainer'
 import SignupContainer from './containers/SignupContainer'
+import ProfileContainer from './containers/ProfileContainer'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions'
 import { bindActionCreators } from 'redux'
@@ -31,6 +32,7 @@ class App extends Component {
                 <Route path='/articles/:slug' component={ArticlePreviewContainer} />
                 <Route path='/signin' component={SigninContainer} />
                 <Route path='/signup' component={SignupContainer} />
+                <Route path='/profile' component={ProfileContainer} />
               </Switch>
             </div>
           </div>
