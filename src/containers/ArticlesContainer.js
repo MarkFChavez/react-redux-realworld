@@ -40,12 +40,12 @@ class ArticlesContainer extends Component {
 
   setGlobalTab (tab) {
     this.setState({ selectedTab: tab })
-    this.props.fetchGlobalArticles(this.state.selectedPage, this.state.selectedTag)
+    this.props.fetchGlobalArticles(this.state.selectedPage)
   }
 
   setYourTab (tab) {
     this.setState({ selectedTab: tab })
-    this.props.fetchFeedArticles(this.state.selectedPage, this.state.selectedTag)
+    this.props.fetchFeedArticles(this.state.selectedPage)
   }
 
   renderArticles () {
