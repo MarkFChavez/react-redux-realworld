@@ -3,7 +3,8 @@ import * as types from '../constants/actionTypes'
 const initialState = {
   authLoading: false,
   isLoggedIn: !!localStorage.getItem('jwt'),
-  currentUser: null
+  currentUser: null,
+  errorMessage: null
 }
 
 const auth = (state = initialState, action) => {
@@ -18,6 +19,7 @@ const auth = (state = initialState, action) => {
         currentUser: action.payload
       }
     case types.AUTH_FAILED:
+      return { ...initialState, errorMessage: action.payload }
     case types.AUTH_RESET:
       return initialState
     case types.SET_USER:

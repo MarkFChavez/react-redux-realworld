@@ -6,6 +6,7 @@ import { signin } from '../actions'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { AUTH_RESET } from '../constants/actionTypes';
 
 class SigninContainer extends Component {
 
@@ -17,10 +18,25 @@ class SigninContainer extends Component {
     this.state = { email: '', password: '' }
   }
 
+  componentWillUnmount () {
+    this.props.resetErrorMessage()
+  }
+
   onSubmit (e) {
     e.preventDefault()
     const { email, password } = this.state
     this.props.signin({ email, password }, this.props.history)
+  }
+
+  renderError () {
+    return (
+      <div style={{ textAlign: 'center' }} className='ui red small message'>
+        <span>
+          <i className="window close icon"></i>
+          {this.props.errorMessage}
+        </span>
+      </div>
+    )
   }
 
   render () {
@@ -34,6 +50,7 @@ class SigninContainer extends Component {
           </center>
 
           <Form loading={this.props.authLoading} onSubmit={this.onSubmit}>
+
             <FormField
               name='email'
               value={this.state.email}
@@ -57,6 +74,8 @@ class SigninContainer extends Component {
                 Create a new account
               </Link> */}
             </FormFooter>
+
+            {this.props.errorMessage && this.renderError()}
           </Form>
         </div>
       </div>
@@ -68,9 +87,13 @@ class SigninContainer extends Component {
 const stateToProps = ({ auth }) => (
   {
     isLoggedIn: auth.isLoggedIn,
-    authLoading: auth.authLoading
+    authLoading: auth.authLoading,
+    errorMessage: auth.errorMessage
   }
 )
-const dispatchToProps = dispatch => bindActionCreators({ signin }, dispatch)
+const dispatchToProps = dispatch => bindActionCreators({
+  signin,
+  resetErrorMessage: () => dispatch({ type: AUTH_RESET })
+}, dispatch)
 
 export default connect(stateToProps, dispatchToProps)(SigninContainer)

@@ -11,7 +11,7 @@ export const signin = ({ email, password }, history) => {
         dispatch({ type: types.AUTH_SUCCESS, payload: response.data.user })
       })
       .catch(error => {
-        dispatch({ type: types.AUTH_FAILED })
+        dispatch({ type: types.AUTH_FAILED, payload: 'Email or password is invalid!' })
       })
   }
 }
