@@ -19,6 +19,24 @@ export const fetchGlobalArticles = (offset = 0, tag = '') => {
   }
 }
 
+export const fetchFeedArticles = () => {
+  return dispatch => {
+    dispatch({ type: types.SET_APP_LOADING })
+    dispatch({ type: types.UNSET_ARTICLES_COUNT })
+
+    api.Articles.feed()
+      .then(response => {
+        dispatch({ type: types.SET_ARTICLES, payload: response.data.articles })
+        dispatch({ type: types.UNSET_APP_LOADING })
+        dispatch({ type: types.SET_ARTICLES_COUNT, payload: response.data.articlesCount })
+      })
+      .catch(error => {
+        console.log(error)
+        dispatch({ type: types.UNSET_APP_LOADING })
+      })
+  }
+}
+
 export const fetchArticle = slug => {
   return dispatch => {
     dispatch({ type: types.SET_APP_LOADING })

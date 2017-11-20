@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import ArticleList from '../components/ArticleList'
 import TagList from '../components/TagList'
 import Pagination from '../components/commons/Pagination'
-import { fetchGlobalArticles, fetchTags } from '../actions'
+import { fetchGlobalArticles, fetchFeedArticles, fetchTags } from '../actions'
 
 class ArticlesContainer extends Component {
 
@@ -15,7 +15,11 @@ class ArticlesContainer extends Component {
     this.onTagClick = this.onTagClick.bind(this)
 
     // local component state
-    this.state = { selectedTag: '', selectedPage: 0 }
+    this.state = {
+      selectedTag: '',
+      selectedPage: 0,
+      selectedTab: 'global_feed'
+    }
   }
 
   componentDidMount () {
@@ -34,6 +38,36 @@ class ArticlesContainer extends Component {
     this.setState({ selectedTag: tag })
   }
 
+  setGlobalTab (tab) {
+    this.setState({ selectedTab: tab })
+    this.props.fetchGlobalArticles(this.state.selectedPage, this.state.selectedTag)
+  }
+
+  setYourTab (tab) {
+    this.setState({ selectedTab: tab })
+    this.props.fetchFeedArticles(this.state.selectedPage, this.state.selectedTag)
+  }
+
+  renderArticles () {
+    return (
+      <div>
+        <div className='ui secondary pointing menu'>
+          <a
+            className={`item ${this.state.selectedTab === 'global_feed' ? 'active' : ''}`}
+            onClick={() => this.setGlobalTab('global_feed')}>
+            Global Feed
+          </a>
+          <a
+            className={`item ${this.state.selectedTab === 'your_feed' ? 'active' : ''}`}
+            onClick={() => this.setYourTab('your_feed')}>
+            Your Feed
+          </a>
+        </div>
+        <ArticleList articles={this.props.articles} />
+      </div>
+    )
+  }
+
   render () {
     if (this.props.commons.appLoading) {
       return <div className="ui active centered inline loader"></div>
@@ -43,7 +77,7 @@ class ArticlesContainer extends Component {
       <div className='articles--container'>
         <div className='ui two column stackable grid'>
           <div className='twelve wide column'>
-            <ArticleList articles={this.props.articles} />
+            {this.renderArticles()}
           </div>
 
           <div className='four wide column'>
@@ -67,7 +101,7 @@ const stateToProps = ({ articles, tags, commons }) => (
 )
 
 const dispatchToProps = dispatch => (
-  bindActionCreators({ fetchGlobalArticles, fetchTags }, dispatch)
+  bindActionCreators({ fetchGlobalArticles, fetchFeedArticles, fetchTags }, dispatch)
 )
 
 export default connect(stateToProps, dispatchToProps)(ArticlesContainer)

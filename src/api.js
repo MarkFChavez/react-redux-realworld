@@ -14,6 +14,7 @@ const request = {
 const Articles = {
   all: (offset, tag) => request.get(`${API_ROOT}/articles?limit=20&offset=${offset}&tag=${tag}`),
   show: slug => request.get(`${API_ROOT}/articles/${slug}`),
+  feed: () => request.get(`${API_ROOT}/articles/feed?limit=20`)
 }
 
 const Auth = {
