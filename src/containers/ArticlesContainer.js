@@ -36,6 +36,7 @@ class ArticlesContainer extends Component {
     const firstPage = 0
     this.props.fetchGlobalArticles(firstPage, tag)
     this.setState({ selectedTag: tag })
+    this.setState({ selectedTab: 'global_feed' })
   }
 
   setGlobalTab (tab) {
@@ -57,11 +58,12 @@ class ArticlesContainer extends Component {
             onClick={() => this.setGlobalTab('global_feed')}>
             Global Feed
           </a>
-          <a
-            className={`item ${this.state.selectedTab === 'your_feed' ? 'active' : ''}`}
-            onClick={() => this.setYourTab('your_feed')}>
-            Your Feed
-          </a>
+          {this.props.auth.isLoggedIn &&
+            <a
+              className={`item ${this.state.selectedTab === 'your_feed' ? 'active' : ''}`}
+              onClick={() => this.setYourTab('your_feed')}>
+              Your Feed
+            </a>}
         </div>
         <ArticleList articles={this.props.articles} />
       </div>
@@ -96,8 +98,8 @@ class ArticlesContainer extends Component {
 
 }
 
-const stateToProps = ({ articles, tags, commons }) => (
-  { articles, tags, commons }
+const stateToProps = ({ articles, tags, commons, auth }) => (
+  { articles, tags, commons, auth }
 )
 
 const dispatchToProps = dispatch => (

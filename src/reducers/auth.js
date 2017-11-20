@@ -21,7 +21,7 @@ const auth = (state = initialState, action) => {
     case types.AUTH_FAILED:
       return { ...initialState, errorMessage: action.payload }
     case types.AUTH_RESET:
-      return initialState
+      return { ...initialState, isLoggedIn: false }
     case types.SET_USER:
       return {
         ...state,
